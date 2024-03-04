@@ -19,6 +19,10 @@ public class migros02 {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         Actions actions = new Actions(driver);
 
+        // Butce limiti
+        double butceLimiti = 290.0;
+        double toplamFiyat = 0.0;
+
         // www.migros.com.tr'ye git
         driver.get("https://www.migros.com.tr/");
 
@@ -81,9 +85,7 @@ public class migros02 {
         // urunleri karistir
         Collections.shuffle(urunlerElementiList);
 
-        // Butce limiti
-        double butceLimiti = 700.0;
-        double toplamFiyat = 0.0;
+
 
 // urunleri tikla ve sepete ekle
         for (WebElement urun : urunlerElementiList) {
