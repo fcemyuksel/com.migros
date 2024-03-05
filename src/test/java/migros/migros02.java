@@ -20,7 +20,7 @@ public class migros02 {
         Actions actions = new Actions(driver);
 
         // Butce limiti
-        double butceLimiti = 290.0;
+        double butceLimiti = 20.0;
         double toplamFiyat = 0.0;
 
         // www.migros.com.tr'ye git
