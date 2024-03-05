@@ -20,8 +20,8 @@ public class migros02 {
         Actions actions = new Actions(driver);
 
         // Butce limiti
-        double butceLimiti = 20.0;
-        double toplamFiyat = 0.0;
+        double butceLimiti = 1000.0;
+        double toplamFiyat = 1.0;
 
         // www.migros.com.tr'ye git
         driver.get("https://www.migros.com.tr/");
@@ -61,9 +61,7 @@ public class migros02 {
         driver.findElement(By.xpath("//*[text()=' Evet, Adresim Doğru ']")).click();
         Thread.sleep(1500);
         // Listeyi asagi kaydir
-        actions.keyDown(Keys.PAGE_DOWN)
-                .keyDown(Keys.PAGE_DOWN)
-                .perform();
+        //actions.keyDown(Keys.PAGE_DOWN).keyDown(Keys.PAGE_DOWN).perform();
 
         // Kategorileri bul ve yazdir
         List<WebElement> kategorilerElementiList = driver.findElements(By.xpath("//div[@class='main-category-tabs']"));
