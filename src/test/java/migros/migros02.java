@@ -125,7 +125,7 @@ public class migros02 {
             Thread.sleep(2000);
         }
 
-        // Driver'ı kapat
+        // Driver'i kapat
         driver.quit();
     }
 }
