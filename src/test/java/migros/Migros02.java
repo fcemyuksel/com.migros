@@ -10,7 +10,7 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.*;
 
-public class migros02 {
+public class Migros02 {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
@@ -18,10 +18,10 @@ public class migros02 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         Actions actions = new Actions(driver);
-
+        Random random = new Random();
         // Butce limiti
         double butceLimiti = 1000.0;
-        double toplamFiyat = 1.0;
+        double toplamFiyat = 0.0;
 
         // www.migros.com.tr'ye git
         driver.get("https://www.migros.com.tr/");
@@ -60,14 +60,7 @@ public class migros02 {
         // Evet, Adresim Doğru secenegini tikla
         driver.findElement(By.xpath("//*[text()=' Evet, Adresim Doğru ']")).click();
         Thread.sleep(1500);
-        // Listeyi asagi kaydir
-        //actions.keyDown(Keys.PAGE_DOWN).keyDown(Keys.PAGE_DOWN).perform();
 
-        // Kategorileri bul ve yazdir
-        List<WebElement> kategorilerElementiList = driver.findElements(By.xpath("//div[@class='main-category-tabs']"));
-        for (int i = 0; i < kategorilerElementiList.size(); i++) {
-            System.out.println(i + 1 + "-) " + kategorilerElementiList.get(i).getText());
-        }
         // et balik tikla
         WebElement etBalikElementi = driver.findElement(By.xpath("//span[@class='subtitle-2 text-color-black' and text()='Et & Tavuk & Balık']"));
         jse.executeScript("arguments[0].scrollIntoView();", etBalikElementi);
@@ -83,14 +76,18 @@ public class migros02 {
         // urunleri karistir
         Collections.shuffle(urunlerElementiList);
 
-
-
-// urunleri tikla ve sepete ekle
+        // urunleri tikla ve sepete ekle
         for (WebElement urun : urunlerElementiList) {
-            String urunAdi = urun.getText();
+            // Rastgele bir ürün seç
+            int randomIndex = random.nextInt(urunlerElementiList.size());
+            WebElement randomUrun = urunlerElementiList.get(randomIndex);
+
+            // Ürün adını al
+            String urunAdi = randomUrun.getText();
+
             try {
                 // urun fiyatini al
-                WebElement urunFiyatiElement = urun.findElement(By.xpath("//span[@id='new-amount']"));
+                WebElement urunFiyatiElement = urun.findElement(By.xpath(".//span[@id='new-amount']"));
                 String urunFiyatiString = urunFiyatiElement.getText()
                         .replaceAll("[^0-9.,]+", "")
                         .replace(",", ".")
