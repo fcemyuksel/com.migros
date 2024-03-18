@@ -63,10 +63,11 @@ public class MigrosTest {
         driver.findElement(By.xpath("//*[text()=' Evet, Adresim Doğru ']")).click();
         Thread.sleep(1500);
 
+
         // Et & Tavuk & Balık kategorisini seç
         WebElement etBalikElementi = driver.findElement(By.xpath("//span[@class='subtitle-2 text-color-black' and text()='Et & Tavuk & Balık']"));
-        jse.executeScript("arguments[0].scrollIntoView();", etBalikElementi);
-        Thread.sleep(1500);
+        //jse.executeScript("arguments[0].scrollIntoView();", etBalikElementi);
+        Thread.sleep(2500);
         etBalikElementi.click();
         Thread.sleep(2500);
         actions.keyDown(Keys.END).perform();
